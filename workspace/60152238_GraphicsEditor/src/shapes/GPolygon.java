@@ -29,6 +29,28 @@ public class GPolygon extends GShape {
 			this.polygon.ypoints[this.polygon.npoints-1] = y;
 			return;
 		}
+		switch (this.getCurrentEAnchor()) {
+		case NN:
+			break;
+		case NE:
+			break;
+		case NW:
+			break;
+		case SS:
+			break;
+		case SE:	
+			this.polygon.xpoints[this.polygon.npoints-1] = x;
+			this.polygon.ypoints[this.polygon.npoints-1] = y;
+			break;
+		case SW:
+			break;
+		case EE:
+			break;
+		case WW:
+			break;
+		default:
+			break;
+		}
 	}
 	public void move(int x, int y) {
 		for (int i=0; i<this.polygon.npoints; i++) {

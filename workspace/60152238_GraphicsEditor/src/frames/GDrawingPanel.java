@@ -176,7 +176,7 @@ public class GDrawingPanel extends JPanel {
 			if (eState == EState.drawingNP) {
 				keepTransforming(e.getX(), e.getY());
 			} else if (eState == EState.idle) {
-				GShape shape = onShape(e.getX(), e.getY());
+				//GShape shape = onShape(e.getX(), e.getY());
 				cursor.changeCursor(e.getX(), e.getY(), shapeVector);
 			}
 		}		
