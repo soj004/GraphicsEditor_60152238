@@ -18,6 +18,7 @@ import tranformer.GMover;
 import tranformer.GResizer;
 import tranformer.GRotator;
 import tranformer.GTransformer;
+import util.GStack;
 
 public class GDrawingPanel extends JPanel {
 	// attributes
@@ -28,7 +29,9 @@ public class GDrawingPanel extends JPanel {
 	// components
 	private Vector<GShape> shapeVector;
 	public Vector<GShape> getShapeVector() { return this.shapeVector; }
+	public void setShape(Vector<GShape> shapes){this.shapeVector = shapes; repaint();}
 	private MouseEventHandler mouseEventHandler;
+	private GStack stack;
 	// associative attributes
 	private GShape selectedShape;
 	public void setSelectedShape(GShape selectedShape) {
@@ -39,6 +42,7 @@ public class GDrawingPanel extends JPanel {
 	private GCursor cursor;
 	private GTransformer currentTransformer;
 	
+	public GStack getStack(){return stack;}
 	public GDrawingPanel() {
 		super();
 		// attributes
@@ -55,6 +59,7 @@ public class GDrawingPanel extends JPanel {
 		
 		cursor = new GCursor();
 		cursor.init(this);
+		stack = new GStack();
 	}
 	public void initialize() {
 	}
@@ -105,6 +110,7 @@ public class GDrawingPanel extends JPanel {
 		if (this.currentTransformer.getClass().getSimpleName().equals("GDrawer")) {
 			this.shapeVector.add(this.currentShape);
 		}
+		stack.push(shapeVector);
 		this.currentShape.setSelected(true);
 		this.repaint();
 	}

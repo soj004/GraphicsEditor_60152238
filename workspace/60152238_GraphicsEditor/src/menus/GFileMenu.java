@@ -1,5 +1,5 @@
 package menus;
-import java.awt.FileDialog;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedOutputStream;
@@ -66,6 +66,9 @@ public class GFileMenu extends JMenu {
 			e.printStackTrace();
 		}
 	}
+	private void exit(){
+		System.exit(0);
+	}
 
 	private class ActionHandler implements ActionListener {
 		public void actionPerformed(ActionEvent event) {
@@ -74,6 +77,8 @@ public class GFileMenu extends JMenu {
 			} else if (event.getActionCommand().equals(EFileMenuItem.save.name())) {
 				save();
 				
+			} else if(event.getActionCommand().equals(EFileMenuItem.exit.name())){
+				exit();
 			}
 
 		}		

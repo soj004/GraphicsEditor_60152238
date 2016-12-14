@@ -42,10 +42,10 @@ public class GConstants {
 		copy("copy"), 
 		paste("paste"), 
 		delete("delete"), 
-		ddo("do"),
+		redo("redo"),
 		undo("undo"),
 		group("group"),
-		unGorup("unGroup");
+		unGroup("unGroup");
 		private String text;
 		private EEditMenuItem(String text) {
 			this.text = text;

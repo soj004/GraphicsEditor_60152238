@@ -67,4 +67,14 @@ public class GGroup extends GShape{
 			shape.draw(g2d);
 		}
 	}
+	public void insert(GShape shapeManager){
+		shapeManager.gShape = this;
+		groupList.add(0, shapeManager);
+		
+		if(groupList.size() == 1){
+			shape = shapeManager.getBounds();
+		} else {
+			shape = shape.getBounds().createUnion(shapeManager.getBounds());
+		}
+	}
 }

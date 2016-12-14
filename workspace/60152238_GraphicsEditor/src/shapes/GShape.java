@@ -30,6 +30,7 @@ abstract public class GShape implements Serializable {
 
 	public Shape getShape() { return shape;	}
 	public void setShape(Shape shape){this.shape = shape;}
+	public void setGroupShape(GGroup group){this.gShape = group;}
 //	public Anchors getAnchors() {return anchors;}
 //	public void setAnchors(Anchors anchors) {this.anchors = anchors;}
 	
@@ -41,6 +42,7 @@ abstract public class GShape implements Serializable {
 		
 		this.shape = shape;
 		this.anchors = new Anchors();
+		this.gShape = null;
 		
 		this.px = this.py = 0;
 	}
