@@ -13,6 +13,7 @@ import constants.GConstants;
 import constants.GConstants.EAnchors;
 import constants.GConstants.EDrawingType;
 import shapes.GShape;
+import shapes.GSelect;
 import tranformer.GDrawer;
 import tranformer.GMover;
 import tranformer.GResizer;
@@ -28,7 +29,7 @@ public class GDrawingPanel extends JPanel {
 	private EState eState;
 	// components
 	private Vector<GShape> shapeVector;
-	public Vector<GShape> getShapeVector() { return this.shapeVector; }
+	public Vector<GShape> getShapeVector() { repaint(); return this.shapeVector; }
 	public void setShape(Vector<GShape> shapes){this.shapeVector = shapes; repaint();}
 	private MouseEventHandler mouseEventHandler;
 	private GStack stack;
@@ -105,13 +106,22 @@ public class GDrawingPanel extends JPanel {
 	private void finishTransforming(int x, int y) {
 		Graphics2D g2D = (Graphics2D)this.getGraphics();
 		g2D.setXORMode(this.getBackground());
-		this.currentTransformer.finishTransforming(x, y, g2D);
-		
-		if (this.currentTransformer.getClass().getSimpleName().equals("GDrawer")) {
-			this.shapeVector.add(this.currentShape);
+		if(!(this.currentTransformer.getShape() instanceof GSelect)){
+			this.currentTransformer.finishTransforming(x, y, g2D);
+			if (this.currentTransformer.getClass().getSimpleName().equals("GDrawer")) {
+				this.shapeVector.add(this.currentShape);
+				this.currentShape.setSelected(true);
+			} else{
+				repaint();
+			}
+			stack.push(shapeVector);
+		} else{
+			((GSelect)this.currentTransformer.getShape()).selectShape(shapeVector);
+			repaint();
 		}
-		stack.push(shapeVector);
-		this.currentShape.setSelected(true);
+		
+		
+		
 		this.repaint();
 	}
 	private GShape onShape(int x, int y) {

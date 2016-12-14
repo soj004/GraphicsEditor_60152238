@@ -13,7 +13,7 @@ abstract public class GTransformer {
 	protected Vector<GShape> groupList;
 	protected GShape shape;
 	
-	protected GShape getShape() { return this.shape; }
+	public GShape getShape() { return this.shape; }
 	public void setShape(GShape shape){this.shape = shape;}
 	public void setOldP(int x, int y){this.oldP.x = x;	this.oldP.y = y;}
 	public Point getAnchorP(){return anchorP;}

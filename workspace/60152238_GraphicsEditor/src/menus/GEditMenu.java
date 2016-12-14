@@ -57,34 +57,34 @@ public class GEditMenu extends JMenu {
 			}
 		}
 	}
-//	private void group(){
-//		curGroup = new GGroup();
-//		Vector<GShape> groupShape = new Vector<GShape>();
-//		getSelectShape(groupShape);
-//		
-//		for(GShape shapeManager: groupShape){
-//			curGroup.insert(shapeManager);
-//			shapeManager.setSelected(false);
-//		}
-//		curGroup.setSelected(true);
-//		drawingPanel.getShapeVector().add(curGroup);
-//		groups.add(curGroup);
-//	}
-//	private void unGroup(){
-//		for(int i = 0; i < groups.size(); i++){
-//			if(groups.get(i).isSelected()){
-//				curGroup = groups.get(i);
-//			};
-//		}
-//		if(curGroup != null){
-//			for(GShape shape: curGroup.getGroupList()){
-//				drawingPanel.getShapeVector().add(shape);
-//				shape.setGroupShape(null);
-//			}
-//			drawingPanel.getShapeVector().remove(curGroup);
-//			curGroup.getGroupList().clear();
-//		}
-//	}
+	private void group(){
+		curGroup = new GGroup();
+		Vector<GShape> groupShape = new Vector<GShape>();
+		getSelectShape(groupShape);
+		
+		for(GShape shapeManager: groupShape){
+			curGroup.add(shapeManager);
+			shapeManager.setSelected(false);
+		}
+		curGroup.setSelected(true);
+		drawingPanel.getShapeVector().add(curGroup);
+		groups.add(curGroup);
+	}
+	private void unGroup(){
+		for(int i = 0; i < groups.size(); i++){
+			if(groups.get(i).isSelected()){
+				curGroup = groups.get(i);
+			};
+		}
+		if(curGroup != null){
+			for(GShape shape: curGroup.getGroupList()){
+				drawingPanel.getShapeVector().add(shape);
+				shape.setGroupShape(null);
+			}
+			drawingPanel.getShapeVector().remove(curGroup);
+			curGroup.getGroupList().clear();
+		}
+	}
 	
 	private void getSelectShape(Vector<GShape> shapes){
 		shapes.clear();
@@ -119,13 +119,13 @@ public class GEditMenu extends JMenu {
 					e.printStackTrace();
 				}
 			} 
-//			else if (event.getActionCommand().equals(EEditMenuItem.group.name())) {
-//				group();
-//				
-//			} else if (event.getActionCommand().equals(EEditMenuItem.unGroup.name())) {
-//				unGroup();
-//				
-//			}
+			else if (event.getActionCommand().equals(EEditMenuItem.group.name())) {
+				group();
+				
+			} else if (event.getActionCommand().equals(EEditMenuItem.unGroup.name())) {
+				unGroup();
+				
+			}
 
 		}		
 	}

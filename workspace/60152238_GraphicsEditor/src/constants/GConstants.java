@@ -6,6 +6,7 @@ import shapes.GEllipse;
 import shapes.GLine;
 import shapes.GPolygon;
 import shapes.GRectangle;
+import shapes.GSelect;
 
 public class GConstants {
 	// JFrame attributes
@@ -59,7 +60,8 @@ public class GConstants {
 		rectangle("rsc/rectangle.gif", "rsc/rectangleSLT.gif", new GRectangle()),
 		ellipse("rsc/ellipse.gif", "rsc/ellipseSLT.gif", new GEllipse()),
 		line("rsc/line.gif", "rsc/lineSLT.gif", new GLine()),
-		polygon("rsc/polygon.gif", "rsc/polygonSLT.gif", new GPolygon());
+		polygon("rsc/polygon.gif", "rsc/polygonSLT.gif", new GPolygon()),
+		select("rsc/select.gif", "rsc/selectSLT.gif", new GSelect());
 		
 		private String iconName;
 		private String selectedIconName;
